@@ -1,14 +1,15 @@
--- DROP FUNCTION public.select_price_dynamic();
+-- DROP FUNCTION public."1.1.3select_price_dynamic"();
 
-create or replace function public.select_price_dynamic()
-RETURNS table (
-	change_date timestamp,
-	new_price real,
-	price_change real,
-	change_percent real,
-	warning text
-)
-as $$
+CREATE OR REPLACE FUNCTION public."1.1.3select_price_dynamic"()
+ RETURNS TABLE(
+ 	change_date timestamp without time zone,
+ 	new_price real,
+ 	price_change real,
+ 	change_percent real,
+ 	warning text
+ )
+ LANGUAGE plpgsql
+AS $function$
 begin
     return QUERY 
     select pd.change_date,
@@ -22,6 +23,5 @@ begin
     from price_dynamic pd
     join real_estate re on pd.real_estate_id = re.real_estate_id;
 end;
-$$ language plpgsql;
-
-select * from public.select_price_dynamic();
+$function$
+;

@@ -1,7 +1,9 @@
--- DROP FUNCTION public.realtor_commission();
+-- DROP FUNCTION public."1.1.5realtor_commission"();
 
-create or replace function public.realtor_commission()
-returns void as $$
+CREATE OR REPLACE FUNCTION public."1.1.5realtor_commission"()
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
 declare
 	sales_price double precision;
 begin
@@ -23,6 +25,5 @@ begin
 		end loop;
 end;
 
-$$ language plpgsql;
-
-select * from public.realtor_commission();
+$function$
+;

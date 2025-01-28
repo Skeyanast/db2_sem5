@@ -1,7 +1,9 @@
--- DROP FUNCTION public.square_diffs_check();
+-- DROP FUNCTION public."1.1.4square_diffs_check"();
 
-create or replace function public.square_diffs_check()
-returns void as $$
+CREATE OR REPLACE FUNCTION public."1.1.4square_diffs_check"()
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
 declare
 	invalid_address text;
 	area_difference real;
@@ -28,6 +30,5 @@ begin
 	end if;
 end;
 
-$$ language plpgsql;
-
-select public.square_diffs_check();
+$function$
+;

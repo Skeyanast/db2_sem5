@@ -1,7 +1,9 @@
--- DROP FUNCTION public.check_date();
+-- DROP FUNCTION public."1.1.2check_date"();
 
-create or replace function public.check_date()
-returns void as $$
+CREATE OR REPLACE FUNCTION public."1.1.2check_date"()
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
 declare
 	v_invalid_address text;
 begin
@@ -18,6 +20,5 @@ begin
 		raise notice 'Некорректных дат продажи объектов нет';
 	end if;
 end;
-$$ language plpgsql;
-
-select public.check_date();
+$function$
+;

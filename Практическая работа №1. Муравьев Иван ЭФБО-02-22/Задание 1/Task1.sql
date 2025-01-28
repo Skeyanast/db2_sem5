@@ -1,7 +1,9 @@
--- DROP FUNCTION public.adjust_building_prices();
+-- DROP FUNCTION public."1.1.1adjust_building_prices"();
 
-CREATE OR REPLACE FUNCTION public.adjust_building_prices()
-RETURNS void AS $$
+CREATE OR REPLACE FUNCTION public."1.1adjust_building_prices"()
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
 DECLARE
     v_real_estate_id INTEGER;
     v_listing_date TIMESTAMP;
@@ -33,6 +35,5 @@ BEGIN
         END IF;
     END LOOP;
 END;
-$$ LANGUAGE plpgsql;
-
-SELECT public.adjust_building_prices();
+$function$
+;
